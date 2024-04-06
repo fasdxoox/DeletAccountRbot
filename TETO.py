@@ -11,7 +11,7 @@ import asyncio
 # start Pyrogram App 
 app = Client(
     name="rad", 
-    bot_token=Ahmed.ELHYBA, 
+    bot_token=Ahmed.TETO, 
     api_hash=Ahmed.API_HASH, 
     api_id=Ahmed.API_ID
 )
