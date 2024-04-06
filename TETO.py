@@ -37,7 +37,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     global SESSSIONS
     await app.edit_message_text(
         chat_id=query.message.chat.id, message_id=query.message.id , 
-        text='- ارسل رقم هاتفك 👤\nمثال : +20123456789', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK, 'BACK')]])
+        text='- ارسل رقم هاتفك 👤\nمثال : +20123456789', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', 'BACK')]])
     )
 
     # On Listen Phone Number 
