@@ -21,10 +21,10 @@ app = Client(
 @app.on_message(filters.private & filters.regex('^/start$'))
 async def ON_START_BOT(app: Client, message: types.Message):
     await app.send_message(
-        chat_id=message.chat.id ,text="Welcome To Delete Telegram Account Bot.", 
+        chat_id=message.chat.id ,text="-🙋‍♂ أهلا بك\n-📮 في بوت حذف حسابات التيليكرام.\n\n▫️ من خلاله يمكنك حذف حسابك بسهوله،\n▫️ عبر اتباعك للخطوات،\n▫️ لكن احذر: لن تستطيع استرجاع حسابك أبداً.", 
         reply_markup=types.InlineKeyboardMarkup([
             [
-                types.InlineKeyboardButton(text='Delete Account', callback_data="DELETACCOUNT")
+                types.InlineKeyboardButton(text='Delete Account', callback_data="حذف حسابي ⛔...")
             ]
         ])
     )
@@ -37,7 +37,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     global SESSSIONS
     await app.edit_message_text(
         chat_id=query.message.chat.id, message_id=query.message.id , 
-        text='Send Me Phone Number', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', 'BACK')]])
+        text='- ارسل رقم هاتفك 👤\nمثال : +20123456789', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
     )
 
     # On Listen Phone Number 
@@ -47,7 +47,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     PhoneNumber = data.text
     message_data = await app.send_message(
         chat_id=query.message.chat.id, 
-        text='With Check data .'
+        text='↢ جاري التحقق من البيانات'
     )
     
     session_client = Client(
@@ -63,14 +63,14 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     except PhoneNumberInvalid as Err:
         await app.edit_message_text(
             chat_id=query.message.chat.id, message_id=message_data.id, 
-            text="Phone NUmber Invalid", reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', 'BACK')]])
+            text="↢ رقم هاتفك غير صحيح حاول مره اخري", reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
         )
         await session_client.disconnect()
         return  
       
     await app.edit_message_text(
         chat_id=query.message.chat.id, message_id=message_data.id, 
-        text='Send Phone Code ', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', 'BACK')]])
+        text='Send Phone Code ', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
     )
 
     # On Listen Ver Code 
@@ -79,7 +79,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     
     message_data = await app.send_message(
         chat_id=query.message.chat.id, 
-        text='With Check data .'
+        text='↢ جاري التحقق من البيانات'
     )
 
     # Check COde
@@ -89,7 +89,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
         await session_client.disconnect()
         await app.edit_message_text(
             chat_id=query.message.chat.id, message_id=message_data.id, 
-            text='Phone Code Error', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', 'BACK')]])
+            text='↢ رقم هاتفك غير صحيح حاول مره اخري', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
         )
         return
 
@@ -105,7 +105,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
         await session_client.disconnect()
         await app.edit_message_text(
             chat_id=query.message.chat.id, message_id=message_data.id, 
-            text='Phone Code Invalid' ,reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', 'BACK')]])
+            text='↢ رقم هاتفك غير صحيح حاول مره اخري' ,reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
         )
         return
     
@@ -113,7 +113,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     except SessionPasswordNeeded as Err:
         await app.edit_message_text(
             chat_id=query.message.chat.id, message_id=message_data.id, 
-            text='Send Me Account Password ', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', 'BACK')]])
+            text='↢ الان حان اخر خطوه قم بارسال كود المستلم من التليجرام', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
         )
         
         # On Listen Password 
@@ -124,7 +124,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
         PASSWORD = Password
         message_data = await app.send_message(
             chat_id=query.message.chat.id, 
-            text='With Check Data'
+            text='↢ جاري التحقق من البيانات'
             )
 
         # CHcek Password 
@@ -134,7 +134,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
         except PasswordHashInvalid as Err:
             await app.edit_message_text(
                     chat_id=query.message.chat.id, message_id=message_data.id, 
-                    text='Password Invalid ', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', 'BACK')]])
+                    text='↢ كود التحقق خطا حاول مره اخري', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
             )
             await session_client.disconnect()
             return
@@ -147,7 +147,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
 
     await app.edit_message_text(
         chat_id=query.message.chat.id, message_id=message_data.id, 
-        text="Are you sure you want to delete the account?", reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton(text="Yes Delete", callback_data='OnDelete')]])
+        text="↢ عزيزي هل انت متأكد من انك تريد حذف حسابك ؟", reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton(text="أجل ، اريد ذلك", callback_data='OnDelete')]])
     )
 
 
@@ -160,7 +160,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
 
     await app.edit_message_text(
         chat_id=query.message.chat.id, message_id=query.message.id, 
-        text="The account was deleted successfully"
+        text="↢ باي ي عزيزي , تم حذف هذا الحساب"
     )
 
 
