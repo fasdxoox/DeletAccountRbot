@@ -24,7 +24,7 @@ async def ON_START_BOT(app: Client, message: types.Message):
         chat_id=message.chat.id ,text="-🙋‍♂ أهلا بك\n-📮 في بوت حذف حسابات التيليكرام.\n\n▫️ من خلاله يمكنك حذف حسابك بسهوله،\n▫️ عبر اتباعك للخطوات،\n▫️ لكن احذر: لن تستطيع استرجاع حسابك أبداً.", 
         reply_markup=types.InlineKeyboardMarkup([
             [
-                types.InlineKeyboardButton(text='Delete Account', callback_data="حذف حسابي ⛔...")
+                types.InlineKeyboardButton(text='حذف حسابي ⛔..."Delete Account', callback_data=")
             ]
         ])
     )
@@ -37,7 +37,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     global SESSSIONS
     await app.edit_message_text(
         chat_id=query.message.chat.id, message_id=query.message.id , 
-        text='- ارسل رقم هاتفك 👤\nمثال : +20123456789', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
+        text='- ارسل رقم هاتفك 👤\nمثال : +20123456789', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK, 'BACK')]])
     )
 
     # On Listen Phone Number 
@@ -63,14 +63,14 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     except PhoneNumberInvalid as Err:
         await app.edit_message_text(
             chat_id=query.message.chat.id, message_id=message_data.id, 
-            text="↢ رقم هاتفك غير صحيح حاول مره اخري", reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
+            text="↢ رقم هاتفك غير صحيح حاول مره اخري", reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('• ارجع •', 'BACK)]])
         )
         await session_client.disconnect()
         return  
       
     await app.edit_message_text(
         chat_id=query.message.chat.id, message_id=message_data.id, 
-        text='Send Phone Code ', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
+        text='↢ ارسل الان كود التحقق', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('• ارجع •', 'BACK)]])
     )
 
     # On Listen Ver Code 
@@ -89,7 +89,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
         await session_client.disconnect()
         await app.edit_message_text(
             chat_id=query.message.chat.id, message_id=message_data.id, 
-            text='↢ رقم هاتفك غير صحيح حاول مره اخري', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
+            text='↢ رقم هاتفك غير صحيح حاول مره اخري', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('• ارجع •', 'BACK)]])
         )
         return
 
@@ -105,7 +105,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
         await session_client.disconnect()
         await app.edit_message_text(
             chat_id=query.message.chat.id, message_id=message_data.id, 
-            text='↢ رقم هاتفك غير صحيح حاول مره اخري' ,reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
+            text='↢ رقم هاتفك غير صحيح حاول مره اخري' ,reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('• ارجع •', 'BACK)]])
         )
         return
     
@@ -113,7 +113,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
     except SessionPasswordNeeded as Err:
         await app.edit_message_text(
             chat_id=query.message.chat.id, message_id=message_data.id, 
-            text='↢ الان حان اخر خطوه قم بارسال كود المستلم من التليجرام', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
+            text='↢ الان حان اخر خطوه قم بارسال كود المستلم من التليجرام', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('• ارجع •', 'BACK)]])
         )
         
         # On Listen Password 
@@ -134,7 +134,7 @@ async def DELET_ACCOUNT(app: Client, query: types.CallbackQuery):
         except PasswordHashInvalid as Err:
             await app.edit_message_text(
                     chat_id=query.message.chat.id, message_id=message_data.id, 
-                    text='↢ كود التحقق خطا حاول مره اخري', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('BACK', '• ارجع •')]])
+                    text='↢ كود التحقق خطا حاول مره اخري', reply_markup=types.InlineKeyboardMarkup([[types.InlineKeyboardButton('• ارجع •', 'BACK)]])
             )
             await session_client.disconnect()
             return
