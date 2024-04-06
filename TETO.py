@@ -24,7 +24,7 @@ async def ON_START_BOT(app: Client, message: types.Message):
         chat_id=message.chat.id ,text="-🙋‍♂ أهلا بك\n-📮 في بوت حذف حسابات التيليكرام.\n\n▫️ من خلاله يمكنك حذف حسابك بسهوله،\n▫️ عبر اتباعك للخطوات،\n▫️ لكن احذر: لن تستطيع استرجاع حسابك أبداً.", 
         reply_markup=types.InlineKeyboardMarkup([
             [
-                types.InlineKeyboardButton(text='حذف حسابي ⛔..."Delete Account', callback_data=")
+                types.InlineKeyboardButton(text='حذف حسابي ⛔"Delete Account', callback_data=")
             ]
         ])
     )
